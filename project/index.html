@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RE:ADMIT — Clinical Intelligence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#071311;
+    color:#f5f8f6;
+    font-family:"DM Sans",sans-serif;
+    overflow-x:hidden;
+}
+
+:root{
+    --bg:#071311;
+    --cream:#edf4f1;
+    --soft:#9aaca8;
+    --green:#6fe0c5;
+    --green2:#2b7769;
+    --dark:#0c1d19;
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+    padding:0 6vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:20;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-family:"Manrope";
+    font-weight:800;
+    font-size:19px;
+    letter-spacing:-.8px;
+}
+
+.logo-symbol{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    border:1px solid rgba(111,224,197,.65);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--green);
+    font-size:18px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:35px;
+}
+
+.nav-links a{
+    color:#a8b9b5;
+    text-decoration:none;
+    font-size:12px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-pill{
+    border:1px solid rgba(111,224,197,.3);
+    padding:11px 20px;
+    border-radius:50px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:110px 6vw 60px;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:800px;
+    height:800px;
+    right:-250px;
+    top:-300px;
+    background:radial-gradient(
+        circle,
+        rgba(56,151,131,.17),
+        transparent 65%
+    );
+    pointer-events:none;
+}
+
+.hero-copy{
+    width:48%;
+    position:relative;
+    z-index:5;
+    padding-left:3vw;
+}
+
+.kicker{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:10px;
+    margin-bottom:30px;
+}
+
+.kicker::before{
+    content:"";
+    width:32px;
+    height:1px;
+    background:var(--green);
+}
+
+.hero h1{
+    font-family:"Manrope";
+    font-size:clamp(65px,8vw,125px);
+    line-height:.84;
+    letter-spacing:-7px;
+    font-weight:800;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero-sub{
+    max-width:440px;
+    margin-top:38px;
+    color:#9dafaa;
+    font-size:15px;
+    line-height:1.8;
+}
+
+.hero-buttons{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-top:35px;
+}
+
+.start-btn{
+    text-decoration:none;
+    color:#06110f;
+    background:var(--green);
+    padding:15px 23px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:12px;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.start-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(111,224,197,.15);
+}
+
+.learn{
+    text-decoration:none;
+    color:#9bada8;
+    font-size:12px;
+}
+
+/* =========================
+   HERO VISUAL
+========================= */
+
+.hero-visual{
+    width:52%;
+    height:720px;
+    position:relative;
+}
+
+.hero-photo{
+    position:absolute;
+    inset:20px 0 0 5%;
+    overflow:hidden;
+    border-radius:48% 48% 18% 18% / 32% 32% 15% 15%;
+}
+
+.hero-photo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5,18,15,.03),
+            rgba(5,18,15,.48)
+        );
+}
+
+.hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    filter:saturate(.78) contrast(.96);
+}
+
+/* floating doctor label */
+
+.doctor-chip{
+    position:absolute;
+    left:4%;
+    top:19%;
+    z-index:5;
+    padding:13px 19px;
+    border-radius:50px;
+    background:rgba(9,27,23,.72);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.09);
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.doctor-chip .pulse{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 14px var(--green);
+}
+
+.doctor-chip span{
+    color:#d4dfdc;
+    font-size:10px;
+}
+
+/* floating prediction */
+
+.prediction{
+    position:absolute;
+    z-index:6;
+    right:0;
+    bottom:14%;
+    width:290px;
+    padding:25px;
+    border-radius:28px;
+    background:rgba(8,25,21,.82);
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,.09);
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.prediction-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#819590;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.prediction-status{
+    color:var(--green);
+    font-size:9px;
+}
+
+.prediction-score{
+    margin-top:18px;
+    display:flex;
+    align-items:baseline;
+    gap:5px;
+}
+
+.prediction-score strong{
+    font-family:"Manrope";
+    font-size:65px;
+    letter-spacing:-5px;
+}
+
+.prediction-score span{
+    color:var(--green);
+    font-size:20px;
+}
+
+.prediction p{
+    color:#91a49f;
+    font-size:11px;
+}
+
+.progress{
+    height:4px;
+    margin:19px 0;
+    background:#20322e;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    width:72%;
+    height:100%;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--green2),var(--green));
+}
+
+.prediction-bottom{
+    display:flex;
+    justify-content:space-between;
+    color:#7e918d;
+    font-size:9px;
+}
+
+/* =========================
+   ECG
+========================= */
+
+.ecg{
+    position:absolute;
+    left:-5%;
+    bottom:8%;
+    width:300px;
+    height:90px;
+    z-index:7;
+    opacity:.8;
+}
+
+.ecg svg{
+    width:100%;
+    height:100%;
+}
+
+.ecg path{
+    fill:none;
+    stroke:var(--green);
+    stroke-width:1.5;
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+    animation:ecg 4s linear infinite;
+}
+
+@keyframes ecg{
+    to{
+        stroke-dashoffset:0;
+    }
+}
+
+/* =========================
+   SCROLL
+========================= */
+
+.scroll{
+    position:absolute;
+    bottom:35px;
+    left:6vw;
+    color:#71837f;
+    font-size:9px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.scroll::after{
+    content:"";
+    width:50px;
+    height:1px;
+    background:#50635f;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    padding:100px 10vw 140px;
+    position:relative;
+}
+
+.intro::before{
+    content:"";
+    position:absolute;
+    left:8vw;
+    top:0;
+    width:1px;
+    height:100%;
+    background:linear-gradient(
+        transparent,
+        rgba(111,224,197,.2),
+        transparent
+    );
+}
+
+.intro-label{
+    color:var(--green);
+    font-size:10px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.intro h2{
+    max-width:950px;
+    margin-top:25px;
+    font-family:"Manrope";
+    font-size:clamp(42px,5.5vw,78px);
+    line-height:1;
+    letter-spacing:-4px;
+}
+
+.intro h2 span{
+    color:#536762;
+}
+
+.intro-description{
+    max-width:570px;
+    margin:35px 0 0 auto;
+    color:#91a49f;
+    font-size:14px;
+    line-height:1.9;
+}
+
+/* =========================
+   IMAGE + STORY
+========================= */
+
+.story{
+    padding:0 6vw 150px;
+}
+
+.story-wrap{
+    min-height:700px;
+    position:relative;
+    border-radius:55px;
+    overflow:hidden;
+}
+
+.story-image{
+    position:absolute;
+    inset:0;
+}
+
+.story-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    filter:saturate(.7);
+}
+
+.story-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,16,14,.93) 0%,
+            rgba(5,16,14,.65) 42%,
+            rgba(5,16,14,.15) 100%
+        );
+}
+
+.story-content{
+    position:relative;
+    z-index:3;
+    width:50%;
+    padding:90px 0 90px 8vw;
+}
+
+.story-content small{
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.story-content h2{
+    font-family:"Manrope";
+    font-size:clamp(45px,5vw,75px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-top:22px;
+}
+
+.story-content p{
+    color:#9aada8;
+    font-size:14px;
+    line-height:1.9;
+    margin-top:30px;
+    max-width:450px;
+}
+
+/* soft information pill */
+
+.info-pill{
+    margin-top:40px;
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 19px;
+    border-radius:50px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    color:#b6c5c1;
+    font-size:10px;
+}
+
+.info-pill b{
+    color:var(--green);
+}
+
+/* =========================
+   CLINICAL FLOW
+========================= */
+
+.flow{
+    padding:80px 8vw 150px;
+}
+
+.flow-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:75px;
+}
+
+.flow-header h2{
+    font-family:"Manrope";
+    font-size:clamp(42px,5vw,70px);
+    line-height:.9;
+    letter-spacing:-4px;
+}
+
+.flow-header p{
+    max-width:330px;
+    color:#849791;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.flow-items{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.flow-item{
+    min-height:300px;
+    padding:35px;
+    border-radius:35px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.055),
+        rgba(255,255,255,.018)
+    );
+    border:1px solid rgba(255,255,255,.055);
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.flow-item:hover{
+    transform:translateY(-8px);
+    background:linear-gradient(
+        145deg,
+        rgba(111,224,197,.09),
+        rgba(255,255,255,.018)
+    );
+}
+
+.flow-item::after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    right:-70px;
+    bottom:-70px;
+    border-radius:50%;
+    background:rgba(111,224,197,.06);
+}
+
+.flow-number{
+    color:var(--green);
+    font-family:"Manrope";
+    font-size:13px;
+}
+
+.flow-icon{
+    width:54px;
+    height:54px;
+    margin-top:55px;
+    border-radius:50%;
+    background:rgba(111,224,197,.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--green);
+    font-size:20px;
+}
+
+.flow-item h3{
+    margin-top:22px;
+    font-family:"Manrope";
+    font-size:22px;
+}
+
+.flow-item p{
+    margin-top:10px;
+    color:#82958f;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =========================
+   DOCTOR FEATURE
+========================= */
+
+.doctor-feature{
+    padding:0 6vw 150px;
+}
+
+.doctor-inner{
+    position:relative;
+    min-height:650px;
+    border-radius:60px;
+    overflow:hidden;
+    background:#10221e;
+}
+
+.doctor-inner img{
+    position:absolute;
+    right:0;
+    top:0;
+    width:62%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+}
+
+.doctor-inner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            #10221e 10%,
+            rgba(16,34,30,.93) 34%,
+            rgba(16,34,30,.35) 68%,
+            transparent
+        );
+}
+
+.doctor-copy{
+    position:relative;
+    z-index:4;
+    width:48%;
+    padding:90px 0 90px 8vw;
+}
+
+.doctor-copy small{
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.doctor-copy h2{
+    margin-top:25px;
+    font-family:"Manrope";
+    font-size:clamp(45px,5vw,75px);
+    line-height:.93;
+    letter-spacing:-4px;
+}
+
+.doctor-copy p{
+    max-width:430px;
+    margin-top:30px;
+    color:#96aaa4;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    padding:80px 8vw 150px;
+    text-align:center;
+}
+
+.final small{
+    color:var(--green);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:10px;
+}
+
+.final h2{
+    font-family:"Manrope";
+    font-size:clamp(55px,8vw,120px);
+    line-height:.85;
+    letter-spacing:-7px;
+    margin:25px auto 35px;
+    max-width:1000px;
+}
+
+.final h2 span{
+    color:var(--green);
+}
+
+.final p{
+    max-width:520px;
+    margin:0 auto 35px;
+    color:#91a39e;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:30px 6vw;
+    border-top:1px solid rgba(255,255,255,.07);
+    display:flex;
+    justify-content:space-between;
+    color:#657873;
+    font-size:10px;
+}
+
+footer strong{
+    color:#a6b8b3;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .nav-links a:not(.nav-pill){
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        padding-top:130px;
+    }
+
+    .hero-copy{
+        width:100%;
+        padding-left:0;
+    }
+
+    .hero-visual{
+        width:100%;
+        height:600px;
+        margin-top:30px;
+    }
+
+    .hero-photo{
+        inset:0;
+    }
+
+    .story-content{
+        width:65%;
+    }
+
+    .doctor-copy{
+        width:60%;
+    }
+
+    .flow-items{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    nav{
+        height:75px;
+    }
+
+    .nav-pill{
+        display:none;
+    }
+
+    .hero{
+        padding:120px 6vw 50px;
+    }
+
+    .hero h1{
+        font-size:64px;
+        letter-spacing:-5px;
+    }
+
+    .hero-sub{
+        font-size:13px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .hero-visual{
+        height:500px;
+    }
+
+    .prediction{
+        right:10px;
+        bottom:7%;
+        width:255px;
+    }
+
+    .doctor-chip{
+        left:5px;
+    }
+
+    .ecg{
+        left:-10px;
+        width:220px;
+    }
+
+    .intro{
+        padding:80px 7vw 110px;
+    }
+
+    .intro h2{
+        font-size:43px;
+        letter-spacing:-3px;
+    }
+
+    .intro-description{
+        margin-left:0;
+    }
+
+    .story{
+        padding:0 5vw 100px;
+    }
+
+    .story-wrap{
+        min-height:650px;
+        border-radius:35px;
+    }
+
+    .story-image::after{
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5,16,14,.35),
+                rgba(5,16,14,.95)
+            );
+    }
+
+    .story-content{
+        width:100%;
+        padding:330px 30px 50px;
+    }
+
+    .flow{
+        padding:60px 6vw 100px;
+    }
+
+    .flow-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:25px;
+    }
+
+    .flow-items{
+        grid-template-columns:1fr;
+    }
+
+    .doctor-feature{
+        padding:0 5vw 100px;
+    }
+
+    .doctor-inner{
+        min-height:700px;
+        border-radius:35px;
+    }
+
+    .doctor-inner img{
+        width:100%;
+        height:52%;
+        top:0;
+    }
+
+    .doctor-inner::after{
+        background:
+            linear-gradient(
+                180deg,
+                transparent 25%,
+                rgba(16,34,30,.95) 55%,
+                #10221e 100%
+            );
+    }
+
+    .doctor-copy{
+        width:100%;
+        padding:400px 30px 45px;
+    }
+
+    .final{
+        padding:50px 6vw 100px;
+    }
+
+    .final h2{
+        font-size:58px;
+        letter-spacing:-4px;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:12px;
+    }
+}
+
+
+
+/* =========================
+   INTERACTIVE ASSESSMENT WORKSPACE
+========================= */
+.workspace{background:#edf4f1;color:#10201c;padding:100px 6vw 110px;scroll-margin-top:24px}
+.workspace-inner{max-width:1240px;margin:0 auto}
+.workspace-kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#287966;font-weight:800;margin-bottom:14px}
+.workspace h2{font-family:Manrope,sans-serif;font-size:clamp(32px,4vw,52px);line-height:1.08;letter-spacing:-1.8px;margin-bottom:14px;color:#10201c}
+.workspace-intro{color:#61736d;max-width:720px;line-height:1.7;margin-bottom:34px}
+.workspace-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:22px;align-items:start}
+.panel{background:#fff;border:1px solid #dce7e2;border-radius:18px;padding:25px;box-shadow:0 12px 35px rgba(11,43,34,.05)}
+.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}
+.panel-head h3{font-family:Manrope,sans-serif;font-size:19px;color:#10201c;margin-bottom:5px}
+.panel-head p{font-size:12px;color:#71817b;line-height:1.5}
+.pill-demo{white-space:nowrap;font-size:10px;letter-spacing:.8px;font-weight:800;background:#e7f7f1;color:#24745f;border-radius:99px;padding:8px 10px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label,.check-title{font-size:11px;color:#52635d;font-weight:800;letter-spacing:.2px}
+.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;border:1px solid #d7e2dd;background:#fbfdfc;border-radius:9px;padding:12px 12px;font:13px 'DM Sans',sans-serif;color:#14251f;outline:none;min-width:0}
+.field input:focus,.field select:focus,.field textarea:focus,.toolbar input:focus,.toolbar select:focus{border-color:#4caa91;box-shadow:0 0 0 3px rgba(76,170,145,.12)}
+.field textarea{resize:vertical;min-height:75px}
+.check-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:9px}
+.check-item{display:flex;gap:9px;align-items:flex-start;background:#f5f9f7;border:1px solid #e1ebe6;border-radius:9px;padding:11px;font-size:12px;line-height:1.4;color:#344941}
+.check-item input{accent-color:#247b65;margin-top:2px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.action-btn{border:0;border-radius:10px;padding:13px 17px;font:700 12px 'DM Sans',sans-serif;cursor:pointer;transition:.2s}
+.action-btn.primary{background:#123d32;color:#fff}.action-btn.primary:hover{background:#1c5a49;transform:translateY(-1px)}
+.action-btn.secondary{background:#eaf2ee;color:#214b3f;border:1px solid #d4e3dc}.action-btn.danger{background:#fff0ee;color:#9d352b;border:1px solid #f2d0cb}
+.form-note{font-size:11px;color:#74847e;line-height:1.6;margin-top:14px}
+.result-empty{background:#f4f8f6;border:1px dashed #cadbd3;border-radius:14px;padding:28px;text-align:center;color:#6a7a74;line-height:1.7;font-size:13px}
+.result-empty strong{display:block;color:#263d34;font-size:15px;margin-bottom:6px}
+.result-card{border:1px solid #dfe9e4;border-radius:14px;overflow:hidden;display:none}
+.result-top{padding:21px;background:#f6faf8;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.result-top small{display:block;color:#6e8078;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.result-top h4{font-family:Manrope,sans-serif;font-size:18px;color:#132a21}
+.risk-number{font-family:Manrope,sans-serif;font-size:36px;font-weight:800;letter-spacing:-1.5px;color:#153e31;white-space:nowrap}
+.risk-number span{font-size:16px}
+.risk-meter{height:7px;background:#e0e9e4;margin:0 21px;border-radius:99px;overflow:hidden}
+.risk-meter span{display:block;height:100%;width:0;background:#2e9a76;transition:width .35s}
+.risk-meta{display:flex;justify-content:space-between;padding:11px 21px 17px;color:#72827b;font-size:10px}
+.risk-label{font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;padding:7px 10px;border-radius:99px}
+.risk-label.low{background:#e2f6ea;color:#1f7448}.risk-label.moderate{background:#fff2d9;color:#8d5d08}.risk-label.high{background:#ffe6e2;color:#a33c30}
+.result-body{padding:21px;border-top:1px solid #e7eeea}
+.result-body h5{font-size:12px;margin-bottom:11px;color:#233b31}
+.factor-list{list-style:none;display:grid;gap:9px;margin-bottom:20px}
+.factor-list li{font-size:12px;line-height:1.5;color:#5d7067;display:flex;gap:9px}
+.factor-list li:before{content:'•';color:#288468;font-size:18px;line-height:12px}
+.clinical-note{font-size:11px;color:#6e7f77;line-height:1.6;background:#f5f8f6;border-radius:9px;padding:12px}
+.dashboard{margin-top:24px}
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:22px}
+.stat{background:#fff;border:1px solid #dce7e2;border-radius:14px;padding:18px}
+.stat span{display:block;font-size:10px;color:#71827b;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.stat strong{font:800 29px Manrope,sans-serif;color:#173e32;letter-spacing:-1px}
+.stat small{display:block;color:#84928c;font-size:10px;margin-top:5px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;align-items:center}
+.toolbar input{flex:1;min-width:180px}.toolbar select{width:auto;min-width:145px}
+.table-wrap{width:100%;overflow:auto;border:1px solid #dce7e2;border-radius:12px}
+.patient-table{border-collapse:collapse;width:100%;min-width:780px;background:#fff;text-align:left}
+.patient-table th{background:#f4f8f6;color:#64766d;font-size:10px;text-transform:uppercase;letter-spacing:.7px;padding:13px 14px;white-space:nowrap}
+.patient-table td{padding:14px;border-top:1px solid #edf2ef;color:#344a40;font-size:12px;vertical-align:middle}
+.patient-table tr:hover td{background:#fbfdfc}
+.table-risk{font-size:10px;font-weight:800;padding:6px 8px;border-radius:99px;display:inline-block}
+.table-risk.low{background:#e2f6ea;color:#1f7448}.table-risk.moderate{background:#fff2d9;color:#8d5d08}.table-risk.high{background:#ffe6e2;color:#a33c30}
+.row-actions{display:flex;gap:7px}.mini-btn{border:1px solid #d8e4dd;background:#f8fbf9;color:#305447;border-radius:7px;padding:6px 8px;font-size:10px;cursor:pointer}.mini-btn.delete{color:#9d352b;background:#fff7f6;border-color:#f2d9d5}
+.table-empty{text-align:center;padding:32px;color:#7b8a84;font-size:12px}
+.upload-box{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#f4f8f6;border:1px dashed #c7d9d0;padding:15px;border-radius:11px;margin-bottom:18px}
+.upload-box p{font-size:11px;color:#6a7b73;line-height:1.6;max-width:500px}
+.upload-box input{max-width:235px;font-size:11px;color:#51655b}
+.status-message{font-size:12px;margin-top:10px;line-height:1.5;display:none;padding:11px 13px;border-radius:9px}.status-message.ok{display:block;background:#e9f7ef;color:#216c46}.status-message.error{display:block;background:#fff0ee;color:#96392e}
+.disclaimer-band{margin-top:22px;border-left:3px solid #c18a2e;padding:13px 16px;background:#fff8e9;color:#735b2e;font-size:11px;line-height:1.65}
+@media(max-width:950px){.workspace-grid{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.workspace{padding:72px 5vw}.panel{padding:18px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.check-grid{grid-template-columns:1fr}.stat-grid{gap:9px}.stat{padding:14px}.stat strong{font-size:24px}.panel-head{flex-direction:column}.risk-number{font-size:30px}.result-top{align-items:flex-start}}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        <div class="logo-symbol">+</div>
+        RE:ADMIT
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#intelligence">
+            Intelligence
+        </a>
+
+        <a href="#workflow">
+            Workflow
+        </a>
+
+        <a href="#doctor">
+            For Doctors
+        </a>
+
+        <a href="#start" class="nav-pill">
+            Start Prediction
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-copy">
+
+        <div class="kicker">
+            Clinical Intelligence
+        </div>
+
+        <h1>
+            SEE<br>
+            THE<br>
+            <span>RISK.</span>
+        </h1>
+
+        <p class="hero-sub">
+            A machine-learning platform built around
+            hospital data to help identify patients who
+            may be at risk of re-admission after discharge.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#start" class="start-btn">
+                Predict Re-Admission
+                <span>→</span>
+            </a>
+
+            <a href="#intelligence" class="learn">
+                Discover how it works
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="hero-photo">
+
+            <img
+                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1500&q=90"
+                alt="Doctor in hospital">
+
+        </div>
+
+
+        <div class="doctor-chip">
+
+            <div class="pulse"></div>
+
+            <span>
+                Clinical decision support
+            </span>
+
+        </div>
+
+
+        <div class="prediction">
+
+            <div class="prediction-top">
+
+                <span>
+                    Patient assessment
+                </span>
+
+                <span class="prediction-status">
+                    ACTIVE
+                </span>
+
+            </div>
+
+            <div class="prediction-score">
+
+                <strong id="heroRisk">—</strong>
+                <span>%</span>
+
+            </div>
+
+            <p>
+                Interactive demo risk estimate
+            </p>
+
+            <div class="progress">
+                <span></span>
+            </div>
+
+            <div class="prediction-bottom">
+
+                <span>
+                    Demo preview
+                </span>
+
+                <span>
+                    Browser demo
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="ecg">
+
+            <svg viewBox="0 0 300 90">
+
+                <path d="
+                    M0 45
+                    L55 45
+                    L70 45
+                    L80 20
+                    L90 70
+                    L100 45
+                    L135 45
+                    L145 45
+                    L158 32
+                    L168 57
+                    L180 45
+                    L215 45
+                    L225 45
+                    L238 15
+                    L248 74
+                    L260 45
+                    L300 45
+                "/>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+    <div class="scroll">
+        Scroll to explore
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro" id="intelligence">
+
+    <div class="intro-label">
+        01 / The idea
+    </div>
+
+    <h2>
+        PATIENT DATA
+        <span>CAN TELL A STORY.</span>
+        <br>
+        WE HELP MAKE IT CLEARER.
+    </h2>
+
+    <p class="intro-description">
+        Re-admission can be influenced by multiple clinical
+        and patient factors. RE:ADMIT processes structured
+        hospital data and applies machine-learning techniques
+        to generate a risk estimate that can support clinical
+        decision-making.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     STORY IMAGE
+========================= -->
+
+<section class="story">
+
+    <div class="story-wrap">
+
+        <div class="story-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1516841273335-e39b37888115?auto=format&fit=crop&w=1800&q=90"
+                alt="Hospital environment">
+
+        </div>
+
+
+        <div class="story-content">
+
+            <small>
+                From admission to insight
+            </small>
+
+            <h2>
+                UNDERSTAND<br>
+                WHAT MAY<br>
+                COME NEXT.
+            </h2>
+
+            <p>
+                The system brings together patient information,
+                hospitalization history and relevant clinical
+                attributes to estimate the likelihood of
+                re-admission.
+            </p>
+
+            <div class="info-pill">
+                <b>01</b>
+                Patient information
+                →
+                <b>02</b>
+                Prediction
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WORKFLOW
+========================= -->
+
+<section class="flow" id="workflow">
+
+    <div class="flow-header">
+
+        <h2>
+            ONE<br>
+            CLINICAL<br>
+            FLOW.
+        </h2>
+
+        <p>
+            From raw hospital records to a simple,
+            interpretable prediction designed to
+            complement — not replace — clinical judgement.
+        </p>
+
+    </div>
+
+
+    <div class="flow-items">
+
+
+        <div class="flow-item">
+
+            <div class="flow-number">
+                01
+            </div>
+
+            <div class="flow-icon">
+                +
+            </div>
+
+            <h3>
+                Patient Data
+            </h3>
+
+            <p>
+                Demographic, clinical and hospitalization
+                information enters the system.
+            </p>
+
+        </div>
+
+
+        <div class="flow-item">
+
+            <div class="flow-number">
+                02
+            </div>
+
+            <div class="flow-icon">
+                ◌
+            </div>
+
+            <h3>
+                ML Analysis
+            </h3>
+
+            <p>
+                Prepared patient data is processed by
+                the trained machine-learning model.
+            </p>
+
+        </div>
+
+
+        <div class="flow-item">
+
+            <div class="flow-number">
+                03
+            </div>
+
+            <div class="flow-icon">
+                ↗
+            </div>
+
+            <h3>
+                Risk Insight
+            </h3>
+
+            <p>
+                A re-admission risk estimate is presented
+                through a clear clinical interface.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DOCTOR
+========================= -->
+
+<section class="doctor-feature" id="doctor">
+
+    <div class="doctor-inner">
+
+        <img
+            src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=1500&q=90"
+            alt="Doctor">
+
+        <div class="doctor-copy">
+
+            <small>
+                Designed around the physician
+            </small>
+
+            <h2>
+                DATA<br>
+                SHOULD<br>
+                SERVE<br>
+                CARE.
+            </h2>
+
+            <p>
+                RE:ADMIT is designed as decision support.
+                The final clinical decision remains with
+                the healthcare professional, while the
+                model provides another perspective from
+                the available patient data.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- INTERACTIVE RE:ADMIT WORKSPACE -->
+<section class="workspace" id="predictor">
+  <div class="workspace-inner">
+    <div class="workspace-kicker">RE:ADMIT · Assessment workspace</div>
+    <h2>Patient readmission<br>risk assessment.</h2>
+    <p class="workspace-intro">Enter a patient's clinical and discharge details to generate an explainable demonstration estimate. You can also import multiple patient records from a CSV file, review saved assessments, and export the results.</p>
+
+    <div class="workspace-grid">
+      <section class="panel" aria-labelledby="formHeading">
+        <div class="panel-head"><div><h3 id="formHeading">Patient information</h3><p>Fields marked * are required for an assessment.</p></div><span class="pill-demo">FRONTEND DEMO</span></div>
+        <form id="patientForm">
+          <div class="form-grid">
+            <div class="field"><label for="patientId">Patient / Study ID *</label><input id="patientId" name="patientId" required maxlength="40" placeholder="e.g. P-1001"></div>
+            <div class="field"><label for="patientName">Patient name</label><input id="patientName" name="patientName" maxlength="80" placeholder="Optional; initials are enough"></div>
+            <div class="field"><label for="age">Age *</label><input id="age" name="age" type="number" min="0" max="120" required placeholder="Years"></div>
+            <div class="field"><label for="sex">Sex</label><select id="sex" name="sex"><option value="Not specified">Prefer not to specify</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+            <div class="field full"><label for="diagnosis">Primary health problem *</label><select id="diagnosis" name="diagnosis" required><option value="">Select diagnosis</option><option value="Heart failure">Heart failure</option><option value="Diabetes">Diabetes</option><option value="Respiratory disease">Respiratory disease (e.g. COPD/asthma)</option><option value="Kidney disease">Kidney disease</option><option value="Infection">Infection</option><option value="Hypertension">Hypertension</option><option value="Cancer">Cancer</option><option value="Other">Other / multiple conditions</option></select></div>
+            <div class="field"><label for="lengthOfStay">Hospital stay (days) *</label><input id="lengthOfStay" name="lengthOfStay" type="number" min="0" max="365" required placeholder="e.g. 5"></div>
+            <div class="field"><label for="priorAdmissions">Admissions in last 12 months *</label><input id="priorAdmissions" name="priorAdmissions" type="number" min="0" max="100" required placeholder="e.g. 1"></div>
+            <div class="field"><label for="emergencyVisits">Emergency visits in last 12 months</label><input id="emergencyVisits" name="emergencyVisits" type="number" min="0" max="100" value="0"></div>
+            <div class="field"><label for="medicationCount">Number of medications</label><input id="medicationCount" name="medicationCount" type="number" min="0" max="200" value="0"></div>
+            <div class="field"><label for="comorbidityCount">Other chronic conditions</label><input id="comorbidityCount" name="comorbidityCount" type="number" min="0" max="50" value="0"></div>
+            <div class="field"><label for="discharge">Discharge destination</label><select id="discharge" name="discharge"><option value="Home">Home</option><option value="Home with support">Home with support</option><option value="Rehabilitation / care facility">Rehabilitation / care facility</option><option value="Other facility">Other facility</option></select></div>
+            <div class="field full"><div class="check-title">Clinical / discharge indicators</div><div class="check-grid">
+              <label class="check-item"><input type="checkbox" id="abnormalLabs" name="abnormalLabs"> Abnormal laboratory results noted</label>
+              <label class="check-item"><input type="checkbox" id="followUp" name="followUp" checked> Follow-up appointment arranged</label>
+              <label class="check-item"><input type="checkbox" id="medicationConcerns" name="medicationConcerns"> Medication concerns / reconciliation needed</label>
+              <label class="check-item"><input type="checkbox" id="mobilityConcern" name="mobilityConcern"> Mobility or self-care concerns</label>
+            </div></div>
+            <div class="field full"><label for="notes">Additional notes (optional)</label><textarea id="notes" name="notes" maxlength="1000" placeholder="Brief context; avoid names or sensitive identifiers."></textarea></div>
+          </div>
+          <div class="form-actions"><button class="action-btn primary" type="submit">Calculate risk estimate ↗</button><button class="action-btn secondary" type="reset" id="resetForm">Clear form</button></div>
+          <p class="form-note">Assessment runs in your browser. This demo does not send patient details to a server.</p>
+          <div id="formStatus" class="status-message" role="status"></div>
+        </form>
+      </section>
+
+      <aside class="panel" aria-labelledby="resultHeading">
+        <div class="panel-head"><div><h3 id="resultHeading">Assessment result</h3><p>Risk estimate, contributing factors and suggested review points.</p></div></div>
+        <div id="resultEmpty" class="result-empty"><strong>No assessment yet</strong>Complete the patient information form and select <em>Calculate risk estimate</em>. Your result will appear here.</div>
+        <div id="resultCard" class="result-card" aria-live="polite">
+          <div class="result-top"><div><small id="resultPatientId">Patient assessment</small><h4 id="resultBandTitle">Moderate estimated risk</h4></div><div class="risk-number"><span id="riskScore">—</span><span>%</span></div></div>
+          <div class="risk-meter"><span id="riskBar"></span></div><div class="risk-meta"><span>Lower estimate</span><span>Higher estimate</span></div>
+          <div class="result-body"><h5>Factors contributing to this estimate</h5><ul id="factorList" class="factor-list"></ul><h5>Suggested points for clinician review</h5><ul id="reviewList" class="factor-list"></ul><div class="clinical-note">This score is generated by a transparent, hand-built demo formula—not a trained or clinically validated machine-learning model. It must not be used for diagnosis, treatment, discharge decisions, or real patient care.</div><div class="form-actions"><button type="button" class="action-btn primary" id="saveResult">Save assessment</button><button type="button" class="action-btn secondary" id="exportOne">Export this result</button></div><div id="resultStatus" class="status-message" role="status"></div></div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="dashboard" id="records">
+      <div class="panel">
+        <div class="panel-head"><div><h3>Patient records & analytics</h3><p>Saved locally in this browser. Records remain after refresh on the same browser profile.</p></div><span class="pill-demo" id="recordCountPill">0 RECORDS</span></div>
+        <div class="stat-grid"><div class="stat"><span>Total assessments</span><strong id="statTotal">0</strong><small>Saved records</small></div><div class="stat"><span>High estimates</span><strong id="statHigh">0</strong><small>Estimate ≥ 60%</small></div><div class="stat"><span>Moderate estimates</span><strong id="statModerate">0</strong><small>Estimate 30–59%</small></div><div class="stat"><span>Average estimate</span><strong id="statAverage">—</strong><small>Across saved records</small></div></div>
+        <div class="upload-box"><p><strong>Import patient data (CSV)</strong><br>Use the template for the expected column names. Each valid row is assessed and added to the local records list.</p><div><input type="file" id="csvUpload" accept=".csv,text/csv" aria-label="Upload patient CSV"><button type="button" class="action-btn secondary" id="downloadTemplate">Download CSV template</button></div></div>
+        <div id="uploadStatus" class="status-message" role="status"></div>
+        <div class="toolbar"><input id="searchRecords" type="search" placeholder="Search by patient ID, name or diagnosis…" aria-label="Search saved records"><select id="filterRisk" aria-label="Filter by estimated risk"><option value="all">All risk levels</option><option value="High">High estimate</option><option value="Moderate">Moderate estimate</option><option value="Low">Low estimate</option></select><button class="action-btn secondary" id="exportAll">Export all CSV</button><button class="action-btn danger" id="clearAll">Clear all records</button></div>
+        <div class="table-wrap"><table class="patient-table"><thead><tr><th>Patient ID</th><th>Diagnosis</th><th>Age</th><th>Prior admissions</th><th>Estimate</th><th>Risk level</th><th>Actions</th></tr></thead><tbody id="recordsBody"><tr><td colspan="7" class="table-empty">No records saved yet. Calculate and save an assessment or upload a CSV.</td></tr></tbody></table></div>
+        <div id="recordsStatus" class="status-message" role="status"></div>
+      </div>
+    </section>
+    <div class="disclaimer-band"><strong>Important limitation:</strong> RE:ADMIT in this version is a frontend demonstration only. Its percentage is a rule-based illustrative score, not a probability learned from clinical data. Do not enter real patient-identifying or confidential health information. A validated clinical model requires an appropriate dataset, evaluation, privacy controls, and clinical oversight.</div>
+  </div>
+</section>
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="final" id="start">
+
+    <small>
+        Clinical Prediction
+    </small>
+
+    <h2>
+        READY TO<br>
+        <span>SEE THE RISK?</span>
+    </h2>
+
+    <p>
+        Enter patient information and generate a
+        re-admission risk prediction through the
+        RE:ADMIT platform.
+    </p>
+
+    <a href="#predictor" class="start-btn">
+        Open Prediction System
+        <span>→</span>
+    </a>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        <strong>RE:ADMIT</strong>
+        · Hospital Re-Admission Prediction
+    </div>
+
+    <div>
+        Clinical AI · Patient Analytics · Decision Support
+    </div>
+
+</footer>
+
+
+
+<script>
+(() => {
+  'use strict';
+  const STORAGE_KEY = 'readmit_demo_assessments_v2';
+  const $ = (id) => document.getElementById(id);
+  let currentAssessment = null;
+  let records = loadRecords();
+  const diagnosisWeights = {'Heart failure':16,'Diabetes':8,'Respiratory disease':13,'Kidney disease':14,'Infection':10,'Hypertension':5,'Cancer':12,'Other':9};
+
+  function loadRecords(){
+    try { const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); return Array.isArray(value) ? value : []; }
+    catch(e){ return []; }
+  }
+  function persist(){
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(records)); return true; }
+    catch(e){ showStatus('recordsStatus','Browser storage is unavailable or full. Export your records before closing this page.','error'); return false; }
+  }
+  function numberValue(id){ return Number($(id).value || 0); }
+  function readForm(){
+    const data = {
+      patientId:$('patientId').value.trim(), patientName:$('patientName').value.trim(), age:numberValue('age'), sex:$('sex').value,
+      diagnosis:$('diagnosis').value, lengthOfStay:numberValue('lengthOfStay'), priorAdmissions:numberValue('priorAdmissions'),
+      emergencyVisits:numberValue('emergencyVisits'), medicationCount:numberValue('medicationCount'), comorbidityCount:numberValue('comorbidityCount'),
+      discharge:$('discharge').value, abnormalLabs:$('abnormalLabs').checked, followUp:$('followUp').checked,
+      medicationConcerns:$('medicationConcerns').checked, mobilityConcern:$('mobilityConcern').checked, notes:$('notes').value.trim()
+    };
+    if(!data.patientId || !data.diagnosis || $('age').value==='' || $('lengthOfStay').value==='' || $('priorAdmissions').value==='') throw new Error('Complete Patient / Study ID, Age, Primary health problem, Hospital stay, and Admissions in last 12 months.');
+    if(!Number.isFinite(data.age) || data.age<0 || data.age>120) throw new Error('Age must be between 0 and 120.');
+    for(const key of ['lengthOfStay','priorAdmissions','emergencyVisits','medicationCount','comorbidityCount']) if(data[key]<0 || !Number.isFinite(data[key])) throw new Error('Clinical counts cannot be negative.');
+    return data;
+  }
+  function assess(data){
+    // Transparent illustrative points only; this is NOT a trained or validated clinical model.
+    let score = 8; const factors=[]; const review=[];
+    const add=(points,label)=>{score+=points; if(points>0) factors.push(label+' (+'+points+')');};
+    if(data.age>=80) add(15,'Age 80 or older'); else if(data.age>=65) add(10,'Age 65–79'); else if(data.age>=50) add(4,'Age 50–64');
+    add(diagnosisWeights[data.diagnosis] ?? 9,'Primary diagnosis: '+data.diagnosis);
+    if(data.lengthOfStay>=10) add(13,'Long hospital stay (10+ days)'); else if(data.lengthOfStay>=5) add(7,'Hospital stay of 5–9 days'); else if(data.lengthOfStay>=3) add(3,'Hospital stay of 3–4 days');
+    if(data.priorAdmissions>=3) add(20,'Three or more prior admissions'); else if(data.priorAdmissions===2) add(13,'Two prior admissions'); else if(data.priorAdmissions===1) add(7,'One prior admission');
+    if(data.emergencyVisits>=3) add(10,'Frequent emergency visits'); else if(data.emergencyVisits>=1) add(5,'Prior emergency visit(s)');
+    if(data.medicationCount>=10) add(8,'High medication count (10+)'); else if(data.medicationCount>=5) add(4,'Medication count of 5–9');
+    if(data.comorbidityCount>=3) add(10,'Three or more additional chronic conditions'); else if(data.comorbidityCount>=1) add(5,'Additional chronic condition(s)');
+    if(data.abnormalLabs) add(8,'Abnormal laboratory results reported');
+    if(!data.followUp) add(10,'Follow-up is not arranged');
+    if(data.medicationConcerns) add(7,'Medication concerns reported');
+    if(data.mobilityConcern) add(6,'Mobility or self-care concern');
+    if(data.discharge==='Rehabilitation / care facility') add(2,'Discharge to rehabilitation/care facility'); else if(data.discharge==='Other facility') add(4,'Discharge to another facility');
+    if(!factors.length) factors.push('No additional risk indicators selected; baseline demo points still apply.');
+    if(data.priorAdmissions>0) review.push('Review previous admissions and the reasons for returning to hospital.');
+    if(data.diagnosis==='Heart failure' || data.diagnosis==='Respiratory disease' || data.diagnosis==='Kidney disease') review.push('Review the condition-specific discharge plan and symptom monitoring needs.');
+    if(data.abnormalLabs) review.push('Confirm whether abnormal laboratory findings need follow-up.');
+    if(!data.followUp) review.push('Consider arranging a follow-up appointment and confirming how to access care.');
+    if(data.medicationConcerns || data.medicationCount>=5) review.push('Review medication reconciliation, instructions, and patient understanding.');
+    if(data.mobilityConcern) review.push('Review mobility, self-care support, and the discharge environment.');
+    if(!review.length) review.push('Review the full clinical context and ensure routine discharge instructions and follow-up are clear.');
+    score=Math.max(1,Math.min(95,Math.round(score)));
+    const risk=score>=60?'High':score>=30?'Moderate':'Low';
+    return {...data, score, risk, factors, review, assessedAt:new Date().toISOString(), recordKey:makeId()};
+  }
+  function makeId(){return 'R'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+  function showStatus(id,message,type){const el=$(id);el.textContent=message;el.className='status-message '+type;}
+  function clearStatus(id){const el=$(id);el.textContent='';el.className='status-message';}
+  function showResult(item){
+    currentAssessment=item; $('resultEmpty').style.display='none'; $('resultCard').style.display='block';
+    $('resultPatientId').textContent='Patient ID · '+item.patientId;
+    $('resultBandTitle').textContent=item.risk+' estimated risk'; $('riskScore').textContent=item.score;
+    $('riskBar').style.width=item.score+'%'; $('riskBar').style.background=item.risk==='High'?'#c54f42':item.risk==='Moderate'?'#c28a25':'#2e9a76';
+    $('riskScore').style.color=item.risk==='High'?'#a33c30':item.risk==='Moderate'?'#8d5d08':'#1f7448';
+    $('factorList').innerHTML=''; item.factors.forEach(f=>{const li=document.createElement('li');li.textContent=f;$('factorList').appendChild(li);});
+    $('reviewList').innerHTML=''; item.review.forEach(f=>{const li=document.createElement('li');li.textContent=f;$('reviewList').appendChild(li);});
+    clearStatus('resultStatus');
+  }
+  function saveCurrent(){
+    if(!currentAssessment){showStatus('formStatus','Calculate an assessment before saving.','error');return;}
+    const existing=records.findIndex(r=>r.patientId.toLowerCase()===currentAssessment.patientId.toLowerCase());
+    const copy={...currentAssessment};
+    if(existing>=0){copy.recordKey=records[existing].recordKey;records[existing]=copy;showStatus('resultStatus','Updated the saved record for '+copy.patientId+'.','ok');}
+    else {records.unshift(copy);showStatus('resultStatus','Assessment saved to this browser.','ok');}
+    persist();renderRecords();
+  }
+  function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function renderRecords(){
+    const q=$('searchRecords').value.trim().toLowerCase(), filter=$('filterRisk').value;
+    const shown=records.filter(r=>(!q||[r.patientId,r.patientName,r.diagnosis].some(v=>String(v||'').toLowerCase().includes(q)))&&(filter==='all'||r.risk===filter));
+    $('recordsBody').innerHTML='';
+    if(!shown.length){const tr=document.createElement('tr');const td=document.createElement('td');td.colSpan=7;td.className='table-empty';td.textContent=records.length?'No records match your search/filter.':'No records saved yet. Calculate and save an assessment or upload a CSV.';tr.appendChild(td);$('recordsBody').appendChild(tr);}
+    shown.forEach(r=>{const tr=document.createElement('tr');tr.innerHTML=`<td><strong>${escapeHtml(r.patientId)}</strong>${r.patientName?`<br><span style="color:#7a8982;font-size:10px">${escapeHtml(r.patientName)}</span>`:''}</td><td>${escapeHtml(r.diagnosis)}</td><td>${r.age}</td><td>${r.priorAdmissions}</td><td><strong>${r.score}%</strong></td><td><span class="table-risk ${r.risk.toLowerCase()}">${r.risk}</span></td><td><div class="row-actions"><button class="mini-btn" data-action="view" data-key="${escapeHtml(r.recordKey)}">View</button><button class="mini-btn delete" data-action="delete" data-key="${escapeHtml(r.recordKey)}">Delete</button></div></td>`;$('recordsBody').appendChild(tr);});
+    const total=records.length, high=records.filter(r=>r.risk==='High').length, moderate=records.filter(r=>r.risk==='Moderate').length;
+    $('statTotal').textContent=total; $('statHigh').textContent=high; $('statModerate').textContent=moderate;
+    $('statAverage').textContent=total?Math.round(records.reduce((a,r)=>a+Number(r.score||0),0)/total)+'%':'—'; $('recordCountPill').textContent=total+' RECORD'+(total===1?'':'S');
+  }
+  function csvCell(v){if(v===true)return 'true';if(v===false)return 'false';const s=String(v??'');return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}
+  const csvFields=['patientId','patientName','age','sex','diagnosis','lengthOfStay','priorAdmissions','emergencyVisits','medicationCount','comorbidityCount','discharge','abnormalLabs','followUp','medicationConcerns','mobilityConcern','notes'];
+  function downloadCSV(rows,filename){const csv=[csvFields.join(','),...rows.map(r=>csvFields.map(k=>csvCell(r[k])).join(','))].join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);}
+  function parseCSV(text){
+    const rows=[];let row=[],cell='',quoted=false;
+    for(let i=0;i<text.length;i++){const c=text[i];if(quoted){if(c==='"'&&text[i+1]==='"'){cell+='"';i++;}else if(c==='"')quoted=false;else cell+=c;}else if(c==='"')quoted=true;else if(c===','){row.push(cell);cell='';}else if(c==='\n'){row.push(cell.replace(/\r$/,''));if(row.some(v=>v.trim()!==''))rows.push(row);row=[];cell='';}else cell+=c;}
+    if(cell.length||row.length){row.push(cell.replace(/\r$/,''));if(row.some(v=>v.trim()!==''))rows.push(row);} if(rows.length<2)throw new Error('CSV has no patient rows. Add a header row and at least one patient.');
+    const headers=rows.shift().map(h=>h.trim().replace(/^\uFEFF/,''));return rows.map((vals,i)=>{const obj={};headers.forEach((h,j)=>obj[h]=String(vals[j]??'').trim());obj.__row=i+2;return obj;});
+  }
+  function val(obj,...keys){for(const key of keys){const found=Object.keys(obj).find(k=>k.toLowerCase().replace(/[ _-]/g,'')===key.toLowerCase().replace(/[ _-]/g,''));if(found!==undefined&&obj[found]!=='')return obj[found];}return '';}
+  function bool(v,defaultValue=false){if(v==='')return defaultValue;return ['true','1','yes','y','checked'].includes(String(v).toLowerCase());}
+  function importRow(row){
+    const data={patientId:val(row,'patientId','patient_id','id','studyId'),patientName:val(row,'patientName','patient_name','name'),age:Number(val(row,'age')),sex:val(row,'sex')||'Not specified',diagnosis:val(row,'diagnosis','healthProblem','primaryDiagnosis'),lengthOfStay:Number(val(row,'lengthOfStay','length_of_stay','hospitalStayDays','stayDays')),priorAdmissions:Number(val(row,'priorAdmissions','prior_admissions','previousAdmissions')),emergencyVisits:Number(val(row,'emergencyVisits','emergency_visits')||0),medicationCount:Number(val(row,'medicationCount','medication_count','medications')||0),comorbidityCount:Number(val(row,'comorbidityCount','comorbidity_count','otherConditions')||0),discharge:val(row,'discharge','dischargeDestination')||'Home',abnormalLabs:bool(val(row,'abnormalLabs','abnormal_labs')),followUp:bool(val(row,'followUp','follow_up','followUpPlanned'),true),medicationConcerns:bool(val(row,'medicationConcerns','medication_concerns')),mobilityConcern:bool(val(row,'mobilityConcern','mobility_concern')),notes:val(row,'notes')};
+    if(!data.patientId||!data.diagnosis||val(row,'age')===''||val(row,'lengthOfStay','length_of_stay','hospitalStayDays','stayDays')===''||val(row,'priorAdmissions','prior_admissions','previousAdmissions')==='')throw new Error('row '+row.__row+': missing ID, age, diagnosis, hospital stay, or prior admissions');
+    if(!Number.isFinite(data.age)||data.age<0||data.age>120||!Number.isFinite(data.lengthOfStay)||data.lengthOfStay<0||!Number.isFinite(data.priorAdmissions)||data.priorAdmissions<0)throw new Error('row '+row.__row+': age/stay/admission values are invalid');
+    return assess(data);
+  }
+  $('patientForm').addEventListener('submit',e=>{e.preventDefault();clearStatus('formStatus');try{const result=assess(readForm());showResult(result);showStatus('formStatus','Estimate calculated. Select “Save assessment” to add it to your records.','ok');$('heroRisk').textContent=result.score;}catch(err){showStatus('formStatus',err.message,'error');}});
+  $('patientForm').addEventListener('reset',()=>{setTimeout(()=>{clearStatus('formStatus');},0);});
+  $('saveResult').addEventListener('click',saveCurrent);
+  $('exportOne').addEventListener('click',()=>{if(!currentAssessment){showStatus('resultStatus','Calculate an assessment first.','error');return;}downloadCSV([currentAssessment],'readmit_'+currentAssessment.patientId.replace(/[^a-z0-9_-]/gi,'_')+'.csv');showStatus('resultStatus','CSV export prepared.','ok');});
+  $('searchRecords').addEventListener('input',renderRecords);$('filterRisk').addEventListener('change',renderRecords);
+  $('recordsBody').addEventListener('click',e=>{const btn=e.target.closest('button[data-action]');if(!btn)return;const item=records.find(r=>r.recordKey===btn.dataset.key);if(!item)return;if(btn.dataset.action==='view'){showResult(item);window.scrollTo({top:$('predictor').offsetTop,behavior:'smooth'});}else if(btn.dataset.action==='delete'&&confirm('Delete saved assessment '+item.patientId+'?')){records=records.filter(r=>r.recordKey!==item.recordKey);persist();renderRecords();showStatus('recordsStatus','Deleted assessment '+item.patientId+'.','ok');}});
+  $('exportAll').addEventListener('click',()=>{if(!records.length){showStatus('recordsStatus','There are no saved records to export.','error');return;}downloadCSV(records,'readmit_patient_assessments.csv');showStatus('recordsStatus','Exported '+records.length+' saved record(s) to CSV.','ok');});
+  $('clearAll').addEventListener('click',()=>{if(!records.length){showStatus('recordsStatus','There are no saved records to clear.','error');return;}if(confirm('Clear all '+records.length+' saved records from this browser? This cannot be undone.')){records=[];persist();renderRecords();showStatus('recordsStatus','All local records were cleared.','ok');}});
+  $('downloadTemplate').addEventListener('click',()=>{downloadCSV([{patientId:'P-1001',patientName:'Demo patient',age:68,sex:'Not specified',diagnosis:'Heart failure',lengthOfStay:6,priorAdmissions:1,emergencyVisits:1,medicationCount:7,comorbidityCount:2,discharge:'Home',abnormalLabs:false,followUp:true,medicationConcerns:false,mobilityConcern:false,notes:'Example only; replace with synthetic data'}],'readmit_patient_template.csv');});
+  $('csvUpload').addEventListener('change',async e=>{const file=e.target.files[0];if(!file)return;clearStatus('uploadStatus');try{const parsed=parseCSV(await file.text());const imported=[],errors=[];for(const row of parsed){try{imported.push(importRow(row));}catch(err){errors.push(err.message);}}if(!imported.length)throw new Error('No valid patient rows imported. '+errors.slice(0,4).join('; '));for(const item of imported){const index=records.findIndex(r=>r.patientId.toLowerCase()===item.patientId.toLowerCase());if(index>=0){item.recordKey=records[index].recordKey;records[index]=item;}else records.unshift(item);}persist();renderRecords();let message='Imported '+imported.length+' patient record(s) and calculated estimates.';if(errors.length)message+=' Skipped '+errors.length+' invalid row(s): '+errors.slice(0,3).join('; ')+(errors.length>3?'…':'');showStatus('uploadStatus',message,errors.length?'error':'ok');}catch(err){showStatus('uploadStatus',err.message,'error');}finally{e.target.value='';}});
+  renderRecords();
+})();
+</script>
+
+</body>
+</html>
